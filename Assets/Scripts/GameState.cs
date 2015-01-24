@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class GameState : MonoBehaviour {
+public class GameState {
 
 	public enum GameStage {
 		LOBBY,
@@ -9,5 +9,4 @@ public class GameState : MonoBehaviour {
 		RUNNING,
 		FINISHED
 	}
-
 }
