@@ -22,7 +22,7 @@ public class PlayerControl : MonoBehaviour
 	void Update()
 	{
 		// If the jump button is pressed and the player is grounded then the player should jump.
-		if(Input.GetButtonDown("Jump") && IsGrounded()) {
+		if(networkView.isMine && Input.GetButtonDown("Jump") && IsGrounded()) {
 			jump = true;
 		}
 
