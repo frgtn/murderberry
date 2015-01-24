@@ -8,14 +8,15 @@ public class PlayerControl : MonoBehaviour
 	
 	public float maxSpeed = 8f;				// The fastest the player can travel in the x axis.
 	public float jumpVelocity = 8f;			// Amount of force added when the player jumps.
-	public float distToGround = 0.0f;
 
+	public Transform groundCheck;
+	
 	void Start() {
-		distToGround = collider2D.bounds.extents.y;
+		groundCheck = transform.Find("groundCheck");
 	}
 
 	bool IsGrounded() {
-		return Physics2D.Raycast(transform.position, -Vector2.up, distToGround + 0.1f, 1 << 9);
+		return Physics2D.Linecast(transform.position, groundCheck.position, 1 << LayerMask.NameToLayer("Level"));  
 	}	
 	
 	void Update()
