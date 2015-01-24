@@ -99,7 +99,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jump: 0
-  maxSpeed: 2
+  maxSpeed: 1.5
   jumpVelocity: 5.25
   groundCheck: {fileID: 0}
 --- !u!114 &11488880
