@@ -27,7 +27,6 @@ GameObject:
   - 114: {fileID: 11472866}
   - 50: {fileID: 5072866}
   - 61: {fileID: 6172866}
-  - 148: {fileID: 14819922}
   m_Layer: 0
   m_Name: PlayerFab
   m_TagString: Untagged
@@ -101,18 +100,6 @@ MonoBehaviour:
   maxSpeed: 2
   jumpVelocity: 5.25
   groundCheck: {fileID: 0}
---- !u!148 &14819922
-NetworkView:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 172866}
-  m_Enabled: 1
-  m_StateSynchronization: 1
-  m_Observed: {fileID: 472866}
-  m_ViewID:
-    m_ID: 0
-    m_Type: 0
 --- !u!212 &21272866
 SpriteRenderer:
   m_ObjectHideFlags: 1

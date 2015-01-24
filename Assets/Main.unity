@@ -117,11 +117,11 @@ Prefab:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 14819922, guid: fb6bf1faafc484214844bb6046f1b0d3, type: 2}
+    - target: {fileID: 0}
       propertyPath: m_ViewID.m_ID
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 14819922, guid: fb6bf1faafc484214844bb6046f1b0d3, type: 2}
+    - target: {fileID: 0}
       propertyPath: m_ViewID.m_Type
       value: 1
       objectReference: {fileID: 0}
@@ -189,7 +189,6 @@ GameObject:
   - 114: {fileID: 569018182}
   - 50: {fileID: 569018181}
   - 61: {fileID: 569018180}
-  - 148: {fileID: 569018179}
   - 61: {fileID: 569018185}
   m_Layer: 0
   m_Name: Player
@@ -198,19 +197,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!148 &569018179
-NetworkView:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 14819922, guid: fb6bf1faafc484214844bb6046f1b0d3,
-    type: 2}
-  m_PrefabInternal: {fileID: 215317550}
-  m_GameObject: {fileID: 569018178}
-  m_Enabled: 1
-  m_StateSynchronization: 1
-  m_Observed: {fileID: 569018184}
-  m_ViewID:
-    m_ID: 1
-    m_Type: 1
 --- !u!61 &569018180
 BoxCollider2D:
   m_ObjectHideFlags: 0
