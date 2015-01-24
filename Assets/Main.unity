@@ -81,6 +81,10 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: ObservedComponents.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 472866, guid: fb6bf1faafc484214844bb6046f1b0d3, type: 2}
       propertyPath: m_LocalPosition.x
       value: -2.69700003
@@ -132,6 +136,22 @@ Prefab:
     - target: {fileID: 6172866, guid: fb6bf1faafc484214844bb6046f1b0d3, type: 2}
       propertyPath: m_Center.x
       value: -.00165496557
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: viewIdField
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: instantiationId
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11488882, guid: fb6bf1faafc484214844bb6046f1b0d3, type: 2}
+      propertyPath: viewIdField
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11488882, guid: fb6bf1faafc484214844bb6046f1b0d3, type: 2}
+      propertyPath: instantiationId
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fb6bf1faafc484214844bb6046f1b0d3, type: 2}
@@ -189,6 +209,8 @@ GameObject:
   - 114: {fileID: 569018182}
   - 50: {fileID: 569018181}
   - 61: {fileID: 569018180}
+  - 114: {fileID: 569018186}
+  - 114: {fileID: 569018179}
   - 61: {fileID: 569018185}
   m_Layer: 0
   m_Name: Player
@@ -197,6 +219,20 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &569018179
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11488880, guid: fb6bf1faafc484214844bb6046f1b0d3,
+    type: 2}
+  m_PrefabInternal: {fileID: 215317550}
+  m_GameObject: {fileID: 569018178}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e7cb724808c322458aa4d15f5035fa9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizeVelocity: 1
+  m_SynchronizeAngularVelocity: 1
 --- !u!61 &569018180
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -288,6 +324,33 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_Size: {x: .460325658, y: .262684137}
   m_Center: {x: -.0102669857, y: .0936876014}
+--- !u!114 &569018186
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11488882, guid: fb6bf1faafc484214844bb6046f1b0d3,
+    type: 2}
+  m_PrefabInternal: {fileID: 215317550}
+  m_GameObject: {fileID: 569018178}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ownerId: 0
+  group: 0
+  prefixBackup: -1
+  observed: {fileID: 0}
+  synchronization: 1
+  onSerializeTransformOption: 0
+  onSerializeRigidBodyOption: 2
+  ownershipTransfer: 0
+  ObservedComponents:
+  - {fileID: 569018181}
+  - {fileID: 569018184}
+  ObservedComponentsFoldoutOpen: 1
+  viewIdField: 1
+  instantiationId: 1
+  isRuntimeInstantiated: 0
 --- !u!1 &583917939
 GameObject:
   m_ObjectHideFlags: 0
