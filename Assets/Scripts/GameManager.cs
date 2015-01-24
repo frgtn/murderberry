@@ -6,7 +6,7 @@ public class GameManager : MonoBehaviour {
 
 	private PhotonView photonView;
 	private GameObject[] spawnPoints;
-	private HashSet<PhotonPlayer> readyPlayers;
+
 	enum GameState
 	{
 		STARTING,
@@ -24,39 +24,13 @@ public class GameManager : MonoBehaviour {
 	void Start () {
 		photonView = GetComponent<PhotonView>();
 		spawnPoints = GameObject.FindGameObjectsWithTag("Respawn");
-		PrepareNewGame();
-	}
 
-	void PrepareNewGame() {
-		readyPlayers = new HashSet<PhotonPlayer>();
-	}
-
-	void StartMatch() {
-		int i = 0;
-		foreach(PhotonPlayer player in PhotonNetwork.playerList) {
-			photonView.RPC("ClientStartMatch", player, i);
-			i += 1;
-		}
 	}
 
 	public void PlayerReady() {
 		photonView.RPC("RPCPlayerReady", PhotonTargets.MasterClient, PhotonNetwork.player);
 	}
 
-	[RPC]
-	void RPCPlayerReady (PhotonPlayer player) {
-		if(!PhotonNetwork.isMasterClient) {
-			Debug.Log("We're not master but received ready");
-			return;
-		}
-
-		readyPlayers.Add(player);
-		Debug.Log (readyPlayers.Count + " out of " + PhotonNetwork.playerList.Length + " players ready.");
-
-		if (readyPlayers.Count == PhotonNetwork.playerList.Length) {
-			StartMatch();
-		}
-	}
 
 	[RPC]
 	void ClientStartMatch (int spawnPointNum) {
