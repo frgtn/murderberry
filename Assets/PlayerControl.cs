@@ -6,10 +6,8 @@ public class PlayerControl : MonoBehaviour
 	[HideInInspector]
 	public bool jump = false;				// Condition for whether the player should jump.
 	
-	
-	public float moveForce = 365f;			// Amount of force added to move the player left and right.
-	public float maxSpeed = 5f;				// The fastest the player can travel in the x axis.
-	public float jumpForce = 1000f;			// Amount of force added when the player jumps.
+	public float maxSpeed = 8f;				// The fastest the player can travel in the x axis.
+	public float jumpVelocity = 8f;			// Amount of force added when the player jumps.
 	public float distToGround = 0.0f;
 
 	void Start() {
@@ -26,23 +24,20 @@ public class PlayerControl : MonoBehaviour
 		if(Input.GetButtonDown("Jump") && IsGrounded()) {
 			jump = true;
 		}
-	}
-	
-	
-	void FixedUpdate ()
-	{
-		// Cache the horizontal input.
-		float h = Input.GetAxis("Horizontal");
 
-		// If the player is changing direction (h has a different sign to velocity.x) or hasn't reached maxSpeed yet...
-		if(h * rigidbody2D.velocity.x < maxSpeed)
-			// ... add a force to the player.
-			rigidbody2D.AddForce(Vector2.right * h * moveForce);
-		
 		// If the player's horizontal velocity is greater than the maxSpeed...
 		if(Mathf.Abs(rigidbody2D.velocity.x) > maxSpeed)
 			// ... set the player's velocity to the maxSpeed in the x axis.
 			rigidbody2D.velocity = new Vector2(Mathf.Sign(rigidbody2D.velocity.x) * maxSpeed, rigidbody2D.velocity.y);
+	}
+
+	void FixedUpdate ()
+	{
+		// Cache the horizontal input.
+		float h = Input.GetAxis("Horizontal");
+		Vector2 deltaForce = new Vector2();
+
+		rigidbody2D.velocity = rigidbody2D.velocity + Vector2.right * h * maxSpeed;
 
 		// If the player should jump...
 		if(jump)
@@ -52,7 +47,7 @@ public class PlayerControl : MonoBehaviour
 			// AudioSource.PlayClipAtPoint(jumpClips[i], transform.position);
 			
 			// Add a vertical force to the player.
-			rigidbody2D.AddForce(new Vector2(0f, jumpForce));
+			rigidbody2D.velocity = rigidbody2D.velocity + Vector2.up * 6;
 
 			// Make sure the player can't jump again until the jump conditions from Update are satisfied.
 			jump = false;
