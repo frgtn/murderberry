@@ -35,7 +35,6 @@ public class PlayerControl : MonoBehaviour
 	{
 		// Cache the horizontal input.
 		float h = Input.GetAxis("Horizontal");
-		Vector2 deltaForce = new Vector2();
 
 		rigidbody2D.velocity = rigidbody2D.velocity + Vector2.right * h * maxSpeed;
 
