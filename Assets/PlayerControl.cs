@@ -10,9 +10,11 @@ public class PlayerControl : MonoBehaviour
 	public float jumpVelocity = 8f;			// Amount of force added when the player jumps.
 
 	public Transform groundCheck;
+	private PhotonView photonView;
 	
 	void Start() {
 		groundCheck = transform.Find("groundCheck");
+		photonView = GetComponent<PhotonView>();
 	}
 
 	bool IsGrounded() {
@@ -21,6 +23,9 @@ public class PlayerControl : MonoBehaviour
 	
 	void Update()
 	{
+		if (!photonView.isMine) {
+			return;
+		}
 		// If the jump button is pressed and the player is grounded then the player should jump.
 		if(Input.GetButtonDown("Jump") && IsGrounded()) {
 			jump = true;
@@ -34,6 +39,9 @@ public class PlayerControl : MonoBehaviour
 
 	void FixedUpdate ()
 	{
+		if (!photonView.isMine) {
+			return;
+		}
 		// Cache the horizontal input.
 		float h = Input.GetAxis("Horizontal");
 

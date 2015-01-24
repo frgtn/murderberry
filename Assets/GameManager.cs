@@ -23,7 +23,7 @@ public class GameManager : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		photonView = GetComponent<PhotonView>();
-		GameObject[] SpawnPoints = GameObject.FindGameObjectsWithTag("Respawn");
+		spawnPoints = GameObject.FindGameObjectsWithTag("Respawn");
 		PrepareNewGame();
 	}
 
@@ -51,6 +51,7 @@ public class GameManager : MonoBehaviour {
 		}
 
 		readyPlayers.Add(player);
+		Debug.Log (readyPlayers.Count + " out of " + PhotonNetwork.playerList.Length + " players ready.");
 
 		if (readyPlayers.Count == PhotonNetwork.playerList.Length) {
 			StartMatch();
@@ -60,6 +61,8 @@ public class GameManager : MonoBehaviour {
 	[RPC]
 	void ClientStartMatch (int spawnPointNum) {
 		Debug.Log("Starting in position " + spawnPointNum);
+		Debug.Log (spawnPoints);
+		PhotonNetwork.Instantiate("PlayerFab", spawnPoints[spawnPointNum].transform.position, Quaternion.identity, 0);
 	}
 	
 	// Update is called once per frame
