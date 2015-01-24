@@ -33,4 +33,7 @@ MonoBehaviour:
   - PunRespawn
   - RequestForPickupTimes
   - TaggedPlayer
+  - PickSpawnPoint
+  - ClientStartMatch
+  - RPCPlayerReady
   DisableAutoOpenWizard: 0
