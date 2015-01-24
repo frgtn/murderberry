@@ -6,19 +6,12 @@ public class GameManager : MonoBehaviour {
 
 	private PhotonView photonView;
 	private GameObject[] spawnPoints;
-
-	enum GameState
-	{
-		STARTING,
-		RUNNING,
-		FINISHED
-	}
-
+	
 	public int[] score;
 	public int players = 2;
 	public Transform level;
 	public Transform player;
-	private GameState currentState = GameState.STARTING;
+	private GameState.GameStage currentState = GameState.GameStage.STARTING;
 
 	// Use this for initialization
 	void Start () {

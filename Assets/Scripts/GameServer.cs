@@ -6,21 +6,27 @@ public class GameServer : MonoBehaviour {
 
 	private PhotonView photonView;
 	private HashSet<PhotonPlayer> readyPlayers;
+	private GameState.GameStage gameStage = GameState.GameStage.FINISHED;
 	
 	void Start () {
 		NewMatch();
 		photonView = GetComponent<PhotonView>();
-
 	}
 
 	void NewMatch() {
 		readyPlayers = new HashSet<PhotonPlayer>();
+		gameStage = GameState.GameStage.STARTING;
 	}
 
 	[RPC]
 	void RPCPlayerReady (PhotonPlayer player) {
 		if(!PhotonNetwork.isMasterClient) {
-			Debug.Log("We're not master but received ready");
+			Debug.LogError("We're not master but received ready");
+			return;
+		}
+
+		if(gameStage != GameState.GameStage.STARTING) {
+			Debug.LogError("Received PlayerReady when game isn't in stage STARTING");
 			return;
 		}
 		
@@ -34,6 +40,7 @@ public class GameServer : MonoBehaviour {
 	
 	void StartMatch() {
 		int i = 0;
+		gameStage = GameState.GameStage.RUNNING;
 		foreach(PhotonPlayer player in PhotonNetwork.playerList) {
 			photonView.RPC("ClientStartMatch", player, i);
 			i += 1;
