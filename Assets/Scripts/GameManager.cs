@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour {
 	public int players = 2;
 	public Transform level;
 	public Transform player;
-	private GameState.GameStage currentState = GameState.GameStage.STARTING;
+	private GameState.GameStage currentState = GameState.GameStage.LOBBY;
 
 	// Use this for initialization
 	void Start () {

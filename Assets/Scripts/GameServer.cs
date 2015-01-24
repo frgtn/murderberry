@@ -6,7 +6,7 @@ public class GameServer : MonoBehaviour {
 
 	private PhotonView photonView;
 	private HashSet<PhotonPlayer> readyPlayers;
-	private GameState.GameStage gameStage = GameState.GameStage.FINISHED;
+	private GameState.GameStage gameStage = GameState.GameStage.LOBBY;
 	
 	void Start () {
 		NewMatch();
@@ -15,7 +15,7 @@ public class GameServer : MonoBehaviour {
 
 	void NewMatch() {
 		readyPlayers = new HashSet<PhotonPlayer>();
-		gameStage = GameState.GameStage.STARTING;
+		gameStage = GameState.GameStage.LOBBY;
 	}
 
 	[RPC]
@@ -25,7 +25,7 @@ public class GameServer : MonoBehaviour {
 			return;
 		}
 
-		if(gameStage != GameState.GameStage.STARTING) {
+		if(gameStage != GameState.GameStage.LOBBY) {
 			Debug.LogError("Received PlayerReady when game isn't in stage STARTING");
 			return;
 		}
@@ -40,7 +40,7 @@ public class GameServer : MonoBehaviour {
 	
 	void StartMatch() {
 		int i = 0;
-		gameStage = GameState.GameStage.RUNNING;
+		gameStage = GameState.GameStage.RUNNING; // change this to "STARTING" once we've implemented countdown
 		foreach(PhotonPlayer player in PhotonNetwork.playerList) {
 			photonView.RPC("ClientStartMatch", player, i);
 			i += 1;
