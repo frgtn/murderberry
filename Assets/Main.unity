@@ -74,6 +74,45 @@ NavMeshSettings:
     widthInaccuracy: 16.666666
     heightInaccuracy: 10
   m_NavMesh: {fileID: 0}
+--- !u!1 &140535714
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 140535716}
+  - 114: {fileID: 140535715}
+  m_Layer: 0
+  m_Name: NetworkManagerHolder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &140535715
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 140535714}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74902c8ff6e1c4a72b03889c334cb379, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &140535716
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 140535714}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
 --- !u!1 &226927274
 GameObject:
   m_ObjectHideFlags: 0
@@ -422,6 +461,7 @@ GameObject:
   - 114: {fileID: 1999166083}
   - 50: {fileID: 1999166081}
   - 61: {fileID: 1999166082}
+  - 148: {fileID: 1999166084}
   m_Layer: 0
   m_Name: black
   m_TagString: Untagged
@@ -504,3 +544,15 @@ MonoBehaviour:
   maxSpeed: 2
   jumpVelocity: 8
   distToGround: 0
+--- !u!148 &1999166084
+NetworkView:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1999166078}
+  m_Enabled: 1
+  m_StateSynchronization: 1
+  m_Observed: {fileID: 1999166080}
+  m_ViewID:
+    m_ID: 1
+    m_Type: 1
