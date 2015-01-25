@@ -30,6 +30,7 @@ public class GameManager : MonoBehaviour {
 		Debug.Log("Starting in position " + spawnPointNum);
 		Debug.Log (spawnPoints);
 		var player = PhotonNetwork.Instantiate("PlayerFab", spawnPoints[spawnPointNum].transform.position, Quaternion.identity, 0);
+		player.GetComponent<PlayerControl>().spriteNum = spawnPointNum;
 		readyButton.gameObject.SetActive(false);
 	}
 	
