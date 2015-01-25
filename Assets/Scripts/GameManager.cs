@@ -23,9 +23,11 @@ public class GameManager : MonoBehaviour {
 	public void PlayerReady() {
 		photonView.RPC("RPCPlayerReady", PhotonTargets.MasterClient, PhotonNetwork.player);
 	}
-
-	public void die(GameObject player) {
-		PhotonNetwork.Destroy(player);
+	
+	public void Kill(GameObject other) {
+		// maybe count score?
+		PlayerControl pc = other.GetComponent<PlayerControl>();
+		pc.die();
 	}
 
 	[RPC]

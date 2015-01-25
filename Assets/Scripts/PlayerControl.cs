@@ -8,7 +8,7 @@ public class PlayerControl : MonoBehaviour
 	
 	public float maxSpeed = 8f;				// The fastest the player can travel in the x axis.
 	public float jumpVelocity = 8f;			// Amount of force added when the player jumps.
-	public int spriteNum = 0;
+	public int spriteNum = -1;
 
 	public Transform groundCheck;
 	public Sprite[] playerSprites;
@@ -68,16 +68,24 @@ public class PlayerControl : MonoBehaviour
 	}
 
 	void OnSerializeNetworkView(BitStream stream, NetworkMessageInfo info) {
-		int spriteNumHolder = 0;
+		Debug.Log ("serialize is being called");
+		int spriteNumHolder = -1;
 		if (stream.isWriting) {
 			spriteNumHolder = spriteNum;
 			stream.Serialize(ref spriteNumHolder);
 		} else {
 			stream.Serialize(ref spriteNumHolder);
 			if(spriteNumHolder != spriteNum) {
+				Debug.Log("New sprite number, setting from " + spriteNum + " to " + spriteNumHolder);
 				spriteNum = spriteNumHolder;
 				GetComponent<SpriteRenderer>().sprite = playerSprites[spriteNum];
 			}
+		}
+	}
+	
+	public void die() {
+		if (photonView.isMine()) {
+			PhotonNetwork.Destroy(this);
 		}
 	}
 }
