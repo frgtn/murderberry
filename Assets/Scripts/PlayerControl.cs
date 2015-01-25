@@ -84,8 +84,8 @@ public class PlayerControl : MonoBehaviour
 	}
 	
 	public void die() {
-		if (photonView.isMine()) {
-			PhotonNetwork.Destroy(this);
+		if (photonView.isMine) {
+			PhotonNetwork.Destroy(gameObject);
 		}
 	}
 }
