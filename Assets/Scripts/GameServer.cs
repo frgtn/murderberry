@@ -57,10 +57,10 @@ public class GameServer : MonoBehaviour {
 	public void MurderPlayer(int spawnPointNum) {
 		alivePlayers -= 1;
 		if (alivePlayers == 0) {
-			StartCoroutine("StartMatch");
 			foreach (GameObject player in GameObject.FindGameObjectsWithTag("Player")) {
 				PhotonNetwork.Destroy(gameObject);
 			}
+			StartCoroutine("StartMatch");
 		}
 	}
 		
