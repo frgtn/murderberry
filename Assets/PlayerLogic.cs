@@ -17,6 +17,7 @@ public class PlayerLogic : MonoBehaviour {
 	}
 
 	void OnTriggerEnter2D(Collider2D other) {
+		Debug.Log (other);
 		var go = other.gameObject;
 		if (go.tag == "Player") {
 			if (go.rigidbody2D.velocity.y <= 0) {
