@@ -83,6 +83,12 @@ public class PlayerControl : MonoBehaviour
 		}
 	}
 	
+	public void prize() {
+		if (photonView.isMine) {
+			PhotonNetwork.Destroy(gameObject);
+		}
+	}
+	
 	public void die() {
 		if (photonView.isMine) {
 			PhotonNetwork.Destroy(gameObject);
