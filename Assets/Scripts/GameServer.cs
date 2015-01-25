@@ -8,6 +8,7 @@ public class GameServer : MonoBehaviour {
 	private PhotonView photonView;
 	private HashSet<PhotonPlayer> readyPlayers;
 	private GameState.GameStage gameStage = GameState.GameStage.LOBBY;
+	private int alivePlayers = 0;
 	
 	void Start () {
 		NewMatch();
@@ -41,12 +42,21 @@ public class GameServer : MonoBehaviour {
 
 	[RPC]
 	void UpdateReadyText(string text) {
+		GameObject.Find("Ready").SetActive(true);
 		Text readyText = GameObject.Find("ReadyText").GetComponent<Text>();
 		readyText.text = text;
 	}
 
 	void SendReadyText(string text) {
 		photonView.RPC("UpdateReadyText", PhotonTargets.All, text);
+	}
+	
+	[RPC]
+	public void MurderPlayer(int spawnPointNum) {
+		alivePlayers -= 1;
+		if (alivePlayers == 0) {
+			StartCoroutine("StartMatch");
+		}
 	}
 		
 	IEnumerator StartMatch() {
@@ -73,6 +83,7 @@ public class GameServer : MonoBehaviour {
 			photonView.RPC("ClientStartMatch", player, i);
 			i += 1;
 		}
+		alivePlayers = i;
 	}
 	
 	void Update () {

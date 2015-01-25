@@ -27,6 +27,7 @@ public class GameManager : MonoBehaviour {
 	public void Kill(GameObject other) {
 		// maybe count score?
 		PlayerControl pc = other.GetComponent<PlayerControl>();
+		photonView.RPC("MurderPlayer", PhotonTargets.MasterClient, pc.spriteNum);
 		pc.die();
 	}
 
