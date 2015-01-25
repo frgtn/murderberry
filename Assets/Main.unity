@@ -644,7 +644,7 @@ MonoBehaviour:
   players: 2
   level: {fileID: 0}
   player: {fileID: 472866, guid: fb6bf1faafc484214844bb6046f1b0d3, type: 2}
-  readyButton: {fileID: 1387807855}
+  readyButton: {fileID: 0}
 --- !u!4 &1325170007
 Transform:
   m_ObjectHideFlags: 0

@@ -12,12 +12,14 @@ public class GameManager : MonoBehaviour {
 	public Transform level;
 	public Transform player;
 	private GameState.GameStage currentState = GameState.GameStage.LOBBY;
-	public Transform readyButton;
+	private GameObject readyButton;
 
 	// Use this for initialization
 	void Start () {
 		photonView = GetComponent<PhotonView>();
 		spawnPoints = GameObject.FindGameObjectsWithTag("Respawn");
+		readyButton = GameObject.Find("Ready");
+		readyButton.SetActive(true);
 	}
 
 	public void PlayerReady() {

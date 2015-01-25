@@ -9,10 +9,12 @@ public class GameServer : MonoBehaviour {
 	private HashSet<PhotonPlayer> readyPlayers;
 	private GameState.GameStage gameStage = GameState.GameStage.LOBBY;
 	private int alivePlayers = 0;
+	private GameObject readyButton;
 	
 	void Start () {
 		NewMatch();
 		photonView = GetComponent<PhotonView>();
+		readyButton = GameObject.Find("Ready");
 	}
 
 	void NewMatch() {
@@ -42,7 +44,7 @@ public class GameServer : MonoBehaviour {
 
 	[RPC]
 	void UpdateReadyText(string text) {
-		GameObject.Find("Ready").SetActive(true);
+		readyButton.SetActive(true);
 		Text readyText = GameObject.Find("ReadyText").GetComponent<Text>();
 		readyText.text = text;
 	}
