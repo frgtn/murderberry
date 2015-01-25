@@ -39,24 +39,29 @@ public class GameServer : MonoBehaviour {
 		}
 	}
 
+	[RPC]
 	void UpdateReadyText(string text) {
 		Text readyText = GameObject.Find("ReadyText").GetComponent<Text>();
 		readyText.text = text;
 	}
 
+	void SendReadyText(string text) {
+		photonView.RPC("UpdateReadyText", PhotonTargets.All, text);
+	}
+		
 	IEnumerator StartMatch() {
 		gameStage = GameState.GameStage.STARTING; // change this to "STARTING" once we've implemented countdown
-		UpdateReadyText("What");
+		SendReadyText("What");
 		yield return new WaitForSeconds(1f);
-		UpdateReadyText("Do");
+		SendReadyText("Do");
 		yield return new WaitForSeconds(1f);
-		UpdateReadyText("We");
+		SendReadyText("We");
 		yield return new WaitForSeconds(1f);
-		UpdateReadyText("Do");
+		SendReadyText("Do");
 		yield return new WaitForSeconds(1f);
-		UpdateReadyText("Now?");
+		SendReadyText("Now?");
 		yield return new WaitForSeconds(1f);
-		UpdateReadyText("Kill");
+		SendReadyText("Kill");
 		yield return new WaitForSeconds(2f);
 		ReallyStartMatch();
 	}
