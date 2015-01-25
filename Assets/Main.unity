@@ -137,6 +137,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 509705899}
   - 58: {fileID: 509705900}
+  - 114: {fileID: 509705901}
   m_Layer: 0
   m_Name: Prize
   m_TagString: Untagged
@@ -167,6 +168,17 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_Radius: .256758451
   m_Center: {x: 0, y: -1.05999994}
+--- !u!114 &509705901
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 509705898}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86f4b3e88844b45b4897e62cc64f0711, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &565414612
 GameObject:
   m_ObjectHideFlags: 0

@@ -30,6 +30,9 @@ public class GameManager : MonoBehaviour {
 		pc.die();
 	}
 
+	public void prize(GameObject player) {
+	}
+
 	[RPC]
 	void ClientStartMatch (int spawnPointNum) {
 		Debug.Log("Starting in position " + spawnPointNum);

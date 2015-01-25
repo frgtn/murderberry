@@ -161,6 +161,7 @@ MonoBehaviour:
   jump: 0
   maxSpeed: 1.5
   jumpVelocity: 5.25
+  spriteNum: 4
   groundCheck: {fileID: 0}
   playerSprites:
   - {fileID: 21300000, guid: 18be4f76be075466baaf40f0c5252eb6, type: 3}
