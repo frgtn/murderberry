@@ -36,4 +36,5 @@ MonoBehaviour:
   - PickSpawnPoint
   - ClientStartMatch
   - RPCPlayerReady
+  - UpdateReadyText
   DisableAutoOpenWizard: 0
