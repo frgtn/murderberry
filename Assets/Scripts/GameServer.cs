@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -33,12 +34,34 @@ public class GameServer : MonoBehaviour {
 		readyPlayers.Add(player);
 		Debug.Log (readyPlayers.Count + " out of " + PhotonNetwork.playerList.Length + " players ready.");
 		
-		if (readyPlayers.Count == PhotonNetwork.playerList.Length && PhotonNetwork.playerList.Length > 1) {
-			StartMatch();
+		if (readyPlayers.Count == PhotonNetwork.playerList.Length && PhotonNetwork.playerList.Length > 1 && gameStage == GameState.GameStage.LOBBY) {
+			StartCoroutine("StartMatch");
 		}
 	}
-	
-	void StartMatch() {
+
+	void UpdateReadyText(string text) {
+		Text readyText = GameObject.Find("ReadyText").GetComponent<Text>();
+		readyText.text = text;
+	}
+
+	IEnumerator StartMatch() {
+		gameStage = GameState.GameStage.STARTING; // change this to "STARTING" once we've implemented countdown
+		UpdateReadyText("What");
+		yield return new WaitForSeconds(1f);
+		UpdateReadyText("Do");
+		yield return new WaitForSeconds(1f);
+		UpdateReadyText("We");
+		yield return new WaitForSeconds(1f);
+		UpdateReadyText("Do");
+		yield return new WaitForSeconds(1f);
+		UpdateReadyText("Now?");
+		yield return new WaitForSeconds(1f);
+		UpdateReadyText("Kill");
+		yield return new WaitForSeconds(2f);
+		ReallyStartMatch();
+	}
+
+	void ReallyStartMatch() {
 		int i = 0;
 		gameStage = GameState.GameStage.RUNNING; // change this to "STARTING" once we've implemented countdown
 		foreach(PhotonPlayer player in PhotonNetwork.playerList) {
