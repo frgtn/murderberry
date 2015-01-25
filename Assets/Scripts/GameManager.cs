@@ -24,6 +24,9 @@ public class GameManager : MonoBehaviour {
 		photonView.RPC("RPCPlayerReady", PhotonTargets.MasterClient, PhotonNetwork.player);
 	}
 
+	public void die(GameObject player) {
+		PhotonNetwork.Destroy(player);
+	}
 
 	[RPC]
 	void ClientStartMatch (int spawnPointNum) {

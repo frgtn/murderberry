@@ -31,7 +31,7 @@ GameObject:
   - 114: {fileID: 11454588}
   m_Layer: 0
   m_Name: PlayerFab
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -162,6 +162,11 @@ MonoBehaviour:
   maxSpeed: 1.5
   jumpVelocity: 5.25
   groundCheck: {fileID: 0}
+  playerSprites:
+  - {fileID: 21300000, guid: 18be4f76be075466baaf40f0c5252eb6, type: 3}
+  - {fileID: 21300000, guid: 040392df447d646ec8c65b634a9fb172, type: 3}
+  - {fileID: 21300000, guid: 80af28ae9c9904e08942f4793882d7bd, type: 3}
+  - {fileID: 21300000, guid: 5540c09c1665d48a985794bb9b527a97, type: 3}
 --- !u!114 &11488882
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -188,11 +193,6 @@ MonoBehaviour:
   viewIdField: 0
   instantiationId: -1
   isRuntimeInstantiated: 0
-  playerSprites:
-  - {fileID: 21300000, guid: 18be4f76be075466baaf40f0c5252eb6, type: 3}
-  - {fileID: 21300000, guid: 040392df447d646ec8c65b634a9fb172, type: 3}
-  - {fileID: 21300000, guid: 80af28ae9c9904e08942f4793882d7bd, type: 3}
-  - {fileID: 21300000, guid: 5540c09c1665d48a985794bb9b527a97, type: 3}
 --- !u!212 &21272866
 SpriteRenderer:
   m_ObjectHideFlags: 1
