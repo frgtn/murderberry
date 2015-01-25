@@ -13,7 +13,6 @@ public class GameManager : MonoBehaviour {
 	public Transform player;
 	private GameState.GameStage currentState = GameState.GameStage.LOBBY;
 	public Transform readyButton;
-	public Sprite[] playerSprites;
 
 	// Use this for initialization
 	void Start () {
@@ -31,7 +30,6 @@ public class GameManager : MonoBehaviour {
 		Debug.Log("Starting in position " + spawnPointNum);
 		Debug.Log (spawnPoints);
 		var player = PhotonNetwork.Instantiate("PlayerFab", spawnPoints[spawnPointNum].transform.position, Quaternion.identity, 0);
-		player.GetComponent<SpriteRenderer>().sprite = playerSprites[spawnPointNum];
 		readyButton.gameObject.SetActive(false);
 	}
 	

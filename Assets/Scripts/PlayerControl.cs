@@ -8,10 +8,14 @@ public class PlayerControl : MonoBehaviour
 	
 	public float maxSpeed = 8f;				// The fastest the player can travel in the x axis.
 	public float jumpVelocity = 8f;			// Amount of force added when the player jumps.
+	public int spriteNum = 0;
 
 	public Transform groundCheck;
+	public Sprite[] playerSprites;
+
 	private PhotonView photonView;
 	private PhotonTransformView photonTransformView;
+
 	
 	void Start() {
 		groundCheck = transform.Find("groundCheck");
@@ -61,5 +65,19 @@ public class PlayerControl : MonoBehaviour
 			jump = false;
 		}
 		photonTransformView.SetSynchronizedValues(rigidbody2D.velocity, 0.0f);
+	}
+
+	void OnSerializeNetworkView(BitStream stream, NetworkMessageInfo info) {
+		int spriteNumHolder = 0;
+		if (stream.isWriting) {
+			spriteNumHolder = spriteNum;
+			stream.Serialize(ref spriteNumHolder);
+		} else {
+			stream.Serialize(ref spriteNumHolder);
+			if(spriteNumHolder != spriteNum) {
+				spriteNum = spriteNumHolder;
+				GetComponent<SpriteRenderer>().sprite = playerSprites[spriteNum];
+			}
+		}
 	}
 }
