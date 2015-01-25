@@ -686,6 +686,12 @@ MonoBehaviour:
   players: 2
   level: {fileID: 0}
   player: {fileID: 472866, guid: fb6bf1faafc484214844bb6046f1b0d3, type: 2}
+  readyButton: {fileID: 1387807855}
+  playerSprites:
+  - {fileID: 21300000, guid: 18be4f76be075466baaf40f0c5252eb6, type: 3}
+  - {fileID: 21300000, guid: 040392df447d646ec8c65b634a9fb172, type: 3}
+  - {fileID: 21300000, guid: 80af28ae9c9904e08942f4793882d7bd, type: 3}
+  - {fileID: 21300000, guid: 5540c09c1665d48a985794bb9b527a97, type: 3}
 --- !u!4 &1325170007
 Transform:
   m_ObjectHideFlags: 0

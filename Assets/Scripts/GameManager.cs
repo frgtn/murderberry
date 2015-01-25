@@ -12,12 +12,13 @@ public class GameManager : MonoBehaviour {
 	public Transform level;
 	public Transform player;
 	private GameState.GameStage currentState = GameState.GameStage.LOBBY;
+	public Transform readyButton;
+	public Sprite[] playerSprites;
 
 	// Use this for initialization
 	void Start () {
 		photonView = GetComponent<PhotonView>();
 		spawnPoints = GameObject.FindGameObjectsWithTag("Respawn");
-
 	}
 
 	public void PlayerReady() {
@@ -29,7 +30,9 @@ public class GameManager : MonoBehaviour {
 	void ClientStartMatch (int spawnPointNum) {
 		Debug.Log("Starting in position " + spawnPointNum);
 		Debug.Log (spawnPoints);
-		PhotonNetwork.Instantiate("PlayerFab", spawnPoints[spawnPointNum].transform.position, Quaternion.identity, 0);
+		var player = PhotonNetwork.Instantiate("PlayerFab", spawnPoints[spawnPointNum].transform.position, Quaternion.identity, 0);
+		player.GetComponent<SpriteRenderer>().sprite = playerSprites[spawnPointNum];
+		readyButton.gameObject.SetActive(false);
 	}
 	
 	// Update is called once per frame
