@@ -58,6 +58,9 @@ public class GameServer : MonoBehaviour {
 		alivePlayers -= 1;
 		if (alivePlayers == 0) {
 			StartCoroutine("StartMatch");
+			foreach (GameObject player in GameObject.FindGameObjectsWithTag("Player")) {
+				PhotonNetwork.Destroy(gameObject);
+			}
 		}
 	}
 		
@@ -85,7 +88,7 @@ public class GameServer : MonoBehaviour {
 			photonView.RPC("ClientStartMatch", player, i);
 			i += 1;
 		}
-		alivePlayers = i;
+		alivePlayers = readyPlayers.Count;
 	}
 	
 	void Update () {
