@@ -37,4 +37,5 @@ MonoBehaviour:
   - ClientStartMatch
   - RPCPlayerReady
   - UpdateReadyText
+  - MurderPlayer
   DisableAutoOpenWizard: 0
