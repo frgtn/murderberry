@@ -18,7 +18,7 @@ public class Lava : MonoBehaviour {
 	void OnTriggerEnter2D(Collider2D other) {
 		if (other.gameObject.tag == "Player") {
 			GameObject go = GameObject.Find("Game");
-			((GameManager)go.GetComponent<GameManager>()).kill(other);
+			((GameManager)go.GetComponent<GameManager>()).Kill(other);
 		}
 	}
 }
