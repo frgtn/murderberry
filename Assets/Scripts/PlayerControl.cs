@@ -67,6 +67,14 @@ public class PlayerControl : MonoBehaviour
 		photonTransformView.SetSynchronizedValues(rigidbody2D.velocity, 0.0f);
 	}
 
+	public void SetSprite(int newSpriteNum) {
+		if(newSpriteNum != spriteNum) {
+			Debug.Log("New sprite number, setting from " + spriteNum + " to " + newSpriteNum);
+			spriteNum = newSpriteNum;
+			GetComponent<SpriteRenderer>().sprite = playerSprites[spriteNum];
+		}
+	}
+	
 	void OnSerializeNetworkView(BitStream stream, NetworkMessageInfo info) {
 		Debug.Log ("serialize is being called");
 		int spriteNumHolder = -1;
@@ -75,11 +83,7 @@ public class PlayerControl : MonoBehaviour
 			stream.Serialize(ref spriteNumHolder);
 		} else {
 			stream.Serialize(ref spriteNumHolder);
-			if(spriteNumHolder != spriteNum) {
-				Debug.Log("New sprite number, setting from " + spriteNum + " to " + spriteNumHolder);
-				spriteNum = spriteNumHolder;
-				GetComponent<SpriteRenderer>().sprite = playerSprites[spriteNum];
-			}
+			SetSprite(spriteNumHolder);
 		}
 	}
 	
