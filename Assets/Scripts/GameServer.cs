@@ -33,7 +33,7 @@ public class GameServer : MonoBehaviour {
 		readyPlayers.Add(player);
 		Debug.Log (readyPlayers.Count + " out of " + PhotonNetwork.playerList.Length + " players ready.");
 		
-		if (readyPlayers.Count == PhotonNetwork.playerList.Length) {
+		if (readyPlayers.Count == PhotonNetwork.playerList.Length && PhotonNetwork.playerList.Length > 1) {
 			StartMatch();
 		}
 	}
