@@ -401,7 +401,7 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Size: {x: .620468974, y: .295722246}
-  m_Center: {x: 2.44379044e-06, y: -.59974587}
+  m_Center: {x: 2.44379044e-06, y: -.304056287}
 --- !u!61 &603933599
 BoxCollider2D:
   m_ObjectHideFlags: 0
