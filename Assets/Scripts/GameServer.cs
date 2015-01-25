@@ -58,6 +58,7 @@ public class GameServer : MonoBehaviour {
 		alivePlayers -= 1;
 		if (alivePlayers == 0) {
 			foreach (GameObject player in GameObject.FindGameObjectsWithTag("Player")) {
+				Debug.Log("Removing");
 				PhotonNetwork.Destroy(gameObject);
 			}
 			StartCoroutine("StartMatch");
